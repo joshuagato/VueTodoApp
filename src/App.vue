@@ -6,7 +6,7 @@
 
     <!-- Get the todos which is an array of objects, into this Todos element -->
     <Header />
-    <AddTodo v-on:add="addTodo" />
+    <AddTodo v-on:add-todo="addTodo" />
     <Todos v-bind:todosProp="todosArray" v-on:delete-todo="deleteTodo" />
     <!-- <Bind v-bind:bindTitle="title" /> -->
 
@@ -17,7 +17,7 @@
 import Todos from './components/Todos.vue';
 import Header from './components/layouts/Header.vue';
 import AddTodo from './components/AddTodo.vue';
-import Bind from './components/layouts/Bind.vue';
+// import Bind from './components/layouts/Bind.vue';
 // import HelloWorld from './components/HelloWorld.vue';
 
 export default {
@@ -27,7 +27,7 @@ export default {
     Todos,
     Header,
     AddTodo,
-    Bind
+    // Bind
   },
   data() {
     return {

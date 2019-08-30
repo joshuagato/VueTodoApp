@@ -7,7 +7,8 @@
                 <span  v-bind:class="{'is-done':eachTodoItem.done}">{{ eachTodoItem.title }}</span>
             </section>
 
-            <section> {{ date }}</section>
+            <section v-if="eachTodoItem.done===false"> Added @ {{ date }}</section>
+            <section class="is-done" v-if="eachTodoItem.done===true"> Completed @ {{ date }}</section>
             <!-- <section> {{ eachTodoItem.done }}</section> -->
 
             <button @click="$emit('delete-todo', eachTodoItem.id)" class="delete-item">x</button>

@@ -4,20 +4,20 @@
             <input type="text" v-model="title" name="title" placeholder="Add Todo...">
             <input type="submit" value="Submit" class="btn-submit">
         </form>
-        <p></p>
-        <Bind v-bind:bindTitle="title" />
+        <!-- <p></p> -->
+        <!-- <Bind v-bind:bindTitle="title" /> -->
     </div>
 </template>
 
 
 <script>
 import uuid from 'uuid';
-import Bind from './layouts/Bind.vue';
+// import Bind from './layouts/Bind.vue';
 
 export default {
     name: "AddTodo",
     components: {
-        Bind
+        // Bind
     },
     data() {
         return {
@@ -33,8 +33,10 @@ export default {
                 done: false
             }
             // Send up to parent
-            console.log(this.title);
+            // console.log(this.title);
             this.$emit('add-todo', newTodo);
+
+            this.title = '';
         }
     }
 }
