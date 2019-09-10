@@ -7,8 +7,8 @@
                 <span  v-bind:class="{'is-done':eachTodoItem.done}">{{ eachTodoItem.title }}</span>
             </section>
 
-            <section v-if="eachTodoItem.done===false"> Added @ {{ date }}</section>
-            <section class="is-done" v-if="eachTodoItem.done===true"> Completed @ {{ date }}</section>
+            <section v-if="eachTodoItem.done===false"> Added @ {{ date | moment }}</section>
+            <section class="is-done" v-if="eachTodoItem.done===true"> Completed @ {{ date | moment }}</section>
             <!-- <section> {{ eachTodoItem.done }}</section> -->
 
             <button @click="$emit('delete-todo', eachTodoItem.id)" class="delete-item">x</button>
@@ -18,18 +18,33 @@
 </template>
 
 <script>
+import moment from 'moment';
+import { setInterval } from 'timers';
+
 export default {
     name: "TodoItem",
     props: ["eachTodoItem"],
     data() {
         return {
+            // myVar: setInterval(this.myTimer, 1000),
             date: new Date()
+            // timestamp: moment(this.date).format('lll'),
         }
     },
     methods: {
         markDone() {
             // console.log(123);
             this.eachTodoItem.done = !this.eachTodoItem.done;
+            this.date = new Date();
+        },
+        
+        moment: function() {
+            return moment();
+        }
+    },
+    filters: {
+        moment (date) {
+            return moment(date).format('lll');
         }
     }
 }
